@@ -51,7 +51,6 @@ $(function () {
         visual.style.width = "50px";
         grid.appendChild(visual);
     }
-
     function CreateGround() {
         for (var i = 0; i < 11; i++) {
             createBox(i);
@@ -63,7 +62,6 @@ $(function () {
         document.addEventListener("keydown", control);
         animateEnemy();
     })();
-
     function createBox(i) {
         var g = new Ground(i * 60, 30, "ground");
         arrbox1.push(g);
@@ -164,7 +162,6 @@ $(function () {
             }
         }
     }, 30);
-
     function control(e) {
         if (e.key == "ArrowLeft")
             moveLeft();
@@ -174,27 +171,23 @@ $(function () {
             if (!(win || GameIsOver))
                 Fire();
     }
-
     function moveLeft() {
         if (starCraftLeftSpace >= 20) {
             starCraftLeftSpace -= 20;
             starCraft.style.left = starCraftLeftSpace + "px";
         } else moveRight();
     }
-
     function moveRight() {
         if (starCraftLeftSpace <= 780) {
             starCraftLeftSpace += 20;
             starCraft.style.left = starCraftLeftSpace + "px";
         } else moveLeft();
     }
-
     function Fire() {
         Shot = new Shoot(100, starCraftLeftSpace + 20, "pic/fire.png");
         arrFire.push(Shot);
         Animate();
     }
-
     function Animate() {
         clearInterval(upTimerId);
         upTimerId = setInterval(function () {
@@ -254,13 +247,11 @@ $(function () {
             }
         }, 30)
     }
-
     function Clear(shot) {
         grid.removeChild(shot);
         arrFire.shift();
     }
     var GameIsOver = false;
-
     function animateEnemy() {
         enemyLeftPos = parseInt(getComputedStyle(enemy).left);
         var newPos = starCraftLeftSpace;
@@ -324,7 +315,6 @@ $(function () {
                 animateEnemy();
         });
     }
-
     function reSet() {
         win = false;
         GameIsOver = false;
@@ -337,22 +327,27 @@ $(function () {
             backgroundColor: "red"
         }, 300);
     }
-
+    function ClearAllShotsOfAnyType(){
+        for(i in arrFire){
+            $(arrFire[i].visual).remove();
+            arrFire.shift();}
+        for(i in arrEnemyFire){
+            $(arrEnemyFire[i].visual).remove();
+            arrEnemyFire.shift();}
+    }
     function GameOver() {
-        $(enemyFire.visual).stop();
-        $(enemyFire.visual).remove();
+        ClearAllShotsOfAnyType();
         reSet();
         var cnfrm = confirm("You loose! Do you want to play again ?");
         if (!cnfrm) {
             GameIsOver = true;
             clearInterval(GroundTimer);
-           // win = true; // i wan't enemy simulate me when it's over
             clearInterval(EnemyBulletTimer);
             clearInterval(upTimerId);
         }
     }
-
     function Win() {
+        ClearAllShotsOfAnyType();
         reSet();
         $(enemyFire.visual).stop();
         $(enemyFire.visual).remove();
@@ -368,7 +363,6 @@ $(function () {
             clearInterval(GroundTimer);
             clearInterval(upTimerId);
             clearInterval(EnemyBulletTimer);
-            arrEnemyFire.length = 0;
         }
     }
 })
