@@ -211,7 +211,7 @@ $(function () {
                     (enemyBottomPos == arrFire[i].bottom)
                 ) {
                     $("#enemyblood").animate({
-                        width: '-=80'
+                        width: '-=5'
                     }, 300);
                     //fire enemy with real fire for 600 ms and fade out
                     var firImg = $("<img src='pic/firegif.gif'></img>");
@@ -289,7 +289,7 @@ $(function () {
                         grid.removeChild(arrEnemyFire[i].visual);
                         arrEnemyFire.shift();
                         $("#myblood").animate({
-                            width: '-=60'
+                            width: '-=36'
                         }, 300);
                         //fire Me with real fire for 600 ms and fade out
                         var firImg = $("<img src='pic/firegif.gif'></img>");
