@@ -57,11 +57,14 @@ $(function () {
         }
     }
     //IFFI block to execute those function to start game
-    (function startGame() {
+    (function(){
         CreateGround();
+   })();
+    function startGame() { // I start The Game, just Call me
+        AnimateMyGround()
         document.addEventListener("keydown", control);
         animateEnemy();
-    })();
+    }
     function createBox(i) {
         var g = new Ground(i * 60, 30, "ground");
         arrbox1.push(g);
@@ -94,74 +97,76 @@ $(function () {
         g = new Ground(i * 60, 800, "ground")
         arrbox15.push(g);
     }
-    GroundTimer = setInterval(function () {
-        for (var i = 0; i < 11; i++) {
-            arrbox1[i].bottom -= 5;
-            arrbox2[i].bottom -= 5;
-            arrbox3[i].bottom -= 5;
-            arrbox4[i].bottom -= 5;
-            arrbox5[i].bottom -= 5;
-            arrbox6[i].bottom -= 5;
-            arrbox7[i].bottom -= 5;
-            arrbox8[i].bottom -= 5;
-            arrbox9[i].bottom -= 5;
-            arrbox10[i].bottom -= 5;
-            arrbox11[i].bottom -= 5;
-            arrbox12[i].bottom -= 5;
-            arrbox13[i].bottom -= 5;
-            arrbox14[i].bottom -= 5;
-            arrbox15[i].bottom -= 5;
-            if (arrbox1[i].bottom < 0) {
-                $(arrbox1[0].visual).remove();
-                $(arrbox2[0].visual).remove();
-                $(arrbox3[0].visual).remove();
-                $(arrbox4[0].visual).remove();
-                $(arrbox5[0].visual).remove();
-                $(arrbox6[0].visual).remove();
-                $(arrbox7[0].visual).remove();
-                $(arrbox8[0].visual).remove();
-                $(arrbox9[0].visual).remove();
-                $(arrbox10[0].visual).remove();
-                $(arrbox11[0].visual).remove();
-                $(arrbox12[0].visual).remove();
-                $(arrbox13[0].visual).remove();
-                $(arrbox14[0].visual).remove();
-                $(arrbox15[0].visual).remove();
-                arrbox1.shift();
-                arrbox2.shift();
-                arrbox3.shift();
-                arrbox4.shift();
-                arrbox5.shift();
-                arrbox6.shift();
-                arrbox7.shift();
-                arrbox8.shift();
-                arrbox9.shift();
-                arrbox10.shift();
-                arrbox11.shift();
-                arrbox12.shift();
-                arrbox13.shift();
-                arrbox14.shift();
-                arrbox15.shift();
-                createBox(11 + Math.floor(Math.random()));
-            } else {
-                arrbox1[i].visual.style.bottom = arrbox1[i].bottom + "px";
-                arrbox2[i].visual.style.bottom = arrbox2[i].bottom + "px";
-                arrbox3[i].visual.style.bottom = arrbox3[i].bottom + "px";
-                arrbox4[i].visual.style.bottom = arrbox4[i].bottom + "px";
-                arrbox5[i].visual.style.bottom = arrbox4[i].bottom + "px";
-                arrbox6[i].visual.style.bottom = arrbox4[i].bottom + "px";
-                arrbox7[i].visual.style.bottom = arrbox4[i].bottom + "px";
-                arrbox8[i].visual.style.bottom = arrbox4[i].bottom + "px";
-                arrbox9[i].visual.style.bottom = arrbox4[i].bottom + "px";
-                arrbox10[i].visual.style.bottom = arrbox4[i].bottom + "px";
-                arrbox11[i].visual.style.bottom = arrbox4[i].bottom + "px";
-                arrbox12[i].visual.style.bottom = arrbox4[i].bottom + "px";
-                arrbox13[i].visual.style.bottom = arrbox4[i].bottom + "px";
-                arrbox14[i].visual.style.bottom = arrbox4[i].bottom + "px";
-                arrbox15[i].visual.style.bottom = arrbox4[i].bottom + "px";
+    function AnimateMyGround(){
+        GroundTimer = setInterval(function () {
+            for (var i = 0; i < 11; i++) {
+                arrbox1[i].bottom -= 5;
+                arrbox2[i].bottom -= 5;
+                arrbox3[i].bottom -= 5;
+                arrbox4[i].bottom -= 5;
+                arrbox5[i].bottom -= 5;
+                arrbox6[i].bottom -= 5;
+                arrbox7[i].bottom -= 5;
+                arrbox8[i].bottom -= 5;
+                arrbox9[i].bottom -= 5;
+                arrbox10[i].bottom -= 5;
+                arrbox11[i].bottom -= 5;
+                arrbox12[i].bottom -= 5;
+                arrbox13[i].bottom -= 5;
+                arrbox14[i].bottom -= 5;
+                arrbox15[i].bottom -= 5;
+                if (arrbox1[i].bottom < 0) {
+                    $(arrbox1[0].visual).remove();
+                    $(arrbox2[0].visual).remove();
+                    $(arrbox3[0].visual).remove();
+                    $(arrbox4[0].visual).remove();
+                    $(arrbox5[0].visual).remove();
+                    $(arrbox6[0].visual).remove();
+                    $(arrbox7[0].visual).remove();
+                    $(arrbox8[0].visual).remove();
+                    $(arrbox9[0].visual).remove();
+                    $(arrbox10[0].visual).remove();
+                    $(arrbox11[0].visual).remove();
+                    $(arrbox12[0].visual).remove();
+                    $(arrbox13[0].visual).remove();
+                    $(arrbox14[0].visual).remove();
+                    $(arrbox15[0].visual).remove();
+                    arrbox1.shift();
+                    arrbox2.shift();
+                    arrbox3.shift();
+                    arrbox4.shift();
+                    arrbox5.shift();
+                    arrbox6.shift();
+                    arrbox7.shift();
+                    arrbox8.shift();
+                    arrbox9.shift();
+                    arrbox10.shift();
+                    arrbox11.shift();
+                    arrbox12.shift();
+                    arrbox13.shift();
+                    arrbox14.shift();
+                    arrbox15.shift();
+                    createBox(11 + Math.floor(Math.random()));
+                } else {
+                    arrbox1[i].visual.style.bottom = arrbox1[i].bottom + "px";
+                    arrbox2[i].visual.style.bottom = arrbox2[i].bottom + "px";
+                    arrbox3[i].visual.style.bottom = arrbox3[i].bottom + "px";
+                    arrbox4[i].visual.style.bottom = arrbox4[i].bottom + "px";
+                    arrbox5[i].visual.style.bottom = arrbox4[i].bottom + "px";
+                    arrbox6[i].visual.style.bottom = arrbox4[i].bottom + "px";
+                    arrbox7[i].visual.style.bottom = arrbox4[i].bottom + "px";
+                    arrbox8[i].visual.style.bottom = arrbox4[i].bottom + "px";
+                    arrbox9[i].visual.style.bottom = arrbox4[i].bottom + "px";
+                    arrbox10[i].visual.style.bottom = arrbox4[i].bottom + "px";
+                    arrbox11[i].visual.style.bottom = arrbox4[i].bottom + "px";
+                    arrbox12[i].visual.style.bottom = arrbox4[i].bottom + "px";
+                    arrbox13[i].visual.style.bottom = arrbox4[i].bottom + "px";
+                    arrbox14[i].visual.style.bottom = arrbox4[i].bottom + "px";
+                    arrbox15[i].visual.style.bottom = arrbox4[i].bottom + "px";
+                }
             }
-        }
-    }, 30);
+        }, 30);
+    }
     function control(e) {
         if (e.key == "ArrowLeft")
             moveLeft();
