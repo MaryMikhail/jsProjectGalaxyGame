@@ -47,6 +47,10 @@ $(function(){
         }
     });
 
+    $("#selectmenu").selectmenu({
+        width : 200
+    });
+
     $("#moneySlider").slider({
         range : "max",
         min : 0,

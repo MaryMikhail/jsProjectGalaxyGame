@@ -2,12 +2,27 @@
 <html>
 <head>
   <link rel="stylesheet"  href="Space-Race.css" >
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
   <title>Space Race</title>
 </head>
     <body>
      <div id="gameName">
         <h1>Space Race</h1>
      </div>
+
+     <div id="welcomeScreen" title="Welcome!">
+      <label for="usrName1">Enter player 1 name :</label>
+      <input type="text" id="usrName1">
+      <label for="usrName2">Enter player 2 name :</label>
+      <input type="text" id="usrName2">
+      <p></p>
+    </div>
+
+    <div id="scoreScreen" title="Well Played!">
+      <p></p>
+    </div>
+
         <div id="space">
             <div id="player1">
             </div>
@@ -23,5 +38,7 @@
         <script src="jqueryDev.js"></script>
         <script src="jquery-ui.js"></script>
         <script src="Space-Race.js"></script>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     </body>    
  </html>

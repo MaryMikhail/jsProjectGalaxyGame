@@ -18,7 +18,67 @@ $(function() {
         b.addClass("obs");
         $("#space").append(b);
     };
-    (function startGame() {
+
+    $("#welcomeScreen").dialog({
+        resizable : false,
+        width : 400,
+        modal : true,
+        show : {
+            effect: "blind",
+            duration: 1000
+        },
+        hide : {
+            effect: "explode",
+            duration: 1000
+        },
+        buttons : {
+            "Play" : function(){
+                if(!$("#usrName1").val() || !$("#usrName2").val()){
+                    alert("Please enter both your names")
+                }   
+                else{
+                    $(this).dialog("close");
+                    startGame();
+                }
+            },
+            "Controls" : function(){
+                $(this).children('p').html("<b>Player '1'</b> on the right <b>Up/Down</b> <br><b>Player '2'</b> on the left <b>W/S</b>").css({"text-align":"center","margin-top":10})
+            }
+        }
+    });
+
+    $("#scoreScreen").dialog({
+        autoOpen : false,
+        resizable : false,
+        modal : true,
+        width : 500,
+        show : {
+            effect : "explode",
+            duration : 500
+        },
+        hide : {
+            effect:"blind",
+            duration : 500
+        },
+        buttons : {
+            "Share Score" : function(){
+                
+            },
+            "Thanks": function(){
+                $(this).dialog("close");
+            },
+            "Support Us" : function(){
+                
+            },
+            "Play again" : function(){
+                reSet();
+                $(this).dialog("close");
+                GameOver = false;
+            }
+        }
+    });
+
+    function startGame() {
         document.addEventListener("keydown", control)
         startTime();
         //initialize each array with 10 obs objects
@@ -28,7 +88,7 @@ $(function() {
         }
         animateObs();
         calcDistanceInterval();
-    })();
+    };
     function startTime() {
         $("#timer").animate({ height: 0 }, 40000, function() {
             GameIsOver();
@@ -79,16 +139,20 @@ $(function() {
             document.getElementById(player).style.bottom = (playerBottom - 20) + "px";
     }
     function GameIsOver() {
+        var playerOneName = $("#usrName1").val();
+        var playerTwoName = $("#usrName2").val()
         if (score1 > score2) 
-            msg = "player 1 win";
+            msg = playerOneName +" won";
          else if (score1 == score2) 
-            msg = "no win";
+            msg = "Draw";
          else 
-            msg = "player 2 win";
-        reSet();
-        cfrm = confirm(msg + " Do you want to play again?");
-        if (cfrm) 
-            GameOver = false;
+            msg = playerTwoName +" won";
+        $("#scoreScreen").children('p').html("Good game ," + msg);
+        $("#scoreScreen").dialog("open");
+        // reSet();
+        // cfrm = confirm(msg + " Do you want to play again?");
+        // if (cfrm) 
+        //     GameOver = false;
         clearInterval(obs_timer_left);
         clearInterval(obs_timer_right);
         clearInterval(_calcDistanceInterval);
