@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="/resources/demos/style.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap">   
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="script.js"></script>
+    </head>
+
+    <body>
+        <div id="paymentDiv" title="Support us">
+            <p id="paymentTitle">Make Payment</p> 
+
+            <div id="gameInfoDiv">
+                <input type="text" name="name" id="gameName" style="width:400px" readonly value="Game Name" class="text ui-widget-content ui-corner-all">
+                <p id="price">Pay 0 EGP</p>
+                <div id="moneySlider" style="width: 150px;">
+            </div>
+            
+
+
+            <div id="paymentInfoDiv">
+                <input type="text" name="name" id="name" style="width:400px" placeholder="Name" class="text ui-widget-content ui-corner-all">
+                <input type="text" name="email" id="email" style="width:400px" placeholder="Email" class="text ui-widget-content ui-corner-all">
+            </div>
+
+            <div id="shippingMethodDiv">
+                <label for="radio-1">Home Delivery</label>
+                <input type="radio" name="radioBtn" id="radio-1" class="shippingRadio" checked>
+                <label for="radio-2">Pick it up from ITI</label>
+                <input type="radio" name="radioBtn" id="radio-2" class="shippingRadio">
+                <p id="shipHome">We will deliver it in 5 working days.</p>
+                <p id="shipITI">You can pick it up tomorrow.</p>
+            </div>
+
+            <div id="afterPayment" title="Thanks for supporting us!!">
+                <p></p>
+            </div>
+
+        </div>
+    </body>
+</html>
