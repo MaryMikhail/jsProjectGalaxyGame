@@ -7,6 +7,8 @@ $( function(){
     $("#welcomeScreen").dialog({
         resizable : false,
         width : 400,
+        modal : true,
+        draggable : false,
         show : {
             effect: "blind",
             duration: 1000
@@ -22,7 +24,6 @@ $( function(){
                 }   
                 else{
                     $(this).dialog("close");
-                    $("#lightboxContainer").css("display","none");
                 }
             },
             "Controls" : function(){
@@ -34,6 +35,7 @@ $( function(){
     $("#scoreScreen").dialog({
         autoOpen : false,
         resizable : false,
+        modal : true,
         width : 500,
         show : {
             effect : "explode",

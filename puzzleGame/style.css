@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+.ui-dialog-titlebar-close {
+    visibility: hidden;
+}
+
 body{
     background-color: antiquewhite;
     background-repeat: no-repeat;

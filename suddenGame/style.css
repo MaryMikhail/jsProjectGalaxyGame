@@ -3,6 +3,10 @@ body{
     font-family: 'Anton', sans-serif;
 }
 
+.ui-dialog-titlebar-close {
+    visibility: hidden;
+}
+
 .titleDiv{
     position: relative;
     border: 2px dashed;
@@ -97,18 +101,7 @@ body{
     left: 75%;
     top: 300px;
 }
-#lightboxContainer
-{
-    position: fixed;
-    top:0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: rgba(0, 0, 0, 0.4);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+
 #welcomeScreen
 {
     position: relative;
