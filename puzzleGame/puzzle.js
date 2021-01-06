@@ -69,7 +69,7 @@ $(function(){
                 
             }
         }
-    })  
+    }); 
     
     //click event on the start button 
     $("#btnStart").on("click",(function(){

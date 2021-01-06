@@ -56,6 +56,61 @@ $(function () {
             createBox(i);
         }
     }
+
+    $("#welcomeScreen").dialog({
+        resizable : false,
+        width : 400,
+        modal : true,
+        show : {
+            effect: "blind",
+            duration: 1000
+        },
+        hide : {
+            effect: "explode",
+            duration: 1000
+        },
+        buttons : {
+            "Play" : function(){
+                if(!$("#usrName").val()){
+                    alert("Please enter your name")
+                }   
+                else{
+                    $(this).dialog("close");
+                    startGame();
+                }
+            },
+            "Controls" : function(){
+                $(this).children('p').html("Destroy the alien,<br>use <b>RIGTH-LEFT</b> for movement and <b>SPACE</b> for fire").css({"text-align":"center","margin-top":10})
+            }
+        }
+    });
+    
+    $("#scoreScreen").dialog({
+        autoOpen : false,
+        resizable : false,
+        modal : true,
+        width : 500,
+        show : {
+            effect : "explode",
+            duration : 500
+        },
+        hide : {
+            effect:"blind",
+            duration : 500
+        },
+        buttons : {
+            "Share Score" : function(){
+                
+            },
+            "Thanks": function(){
+                $(this).dialog("close");
+            },
+            "Support Us" : function(){
+                
+            }
+        }
+    }); 
+
     //IFFI block to execute those function to start game
     (function(){
         CreateGround();

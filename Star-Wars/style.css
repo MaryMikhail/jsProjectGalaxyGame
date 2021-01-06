@@ -2,6 +2,11 @@ body{
     background-image: url(Pic/space1.gif);
     
 }
+
+.ui-dialog-titlebar-close {
+    visibility: hidden;
+}
+
 .grid{
     width: 58%;
     height: 92%;
