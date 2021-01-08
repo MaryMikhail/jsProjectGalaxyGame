@@ -345,7 +345,7 @@ $(function () {
                         arrEnemyFire.shift();
                         $("#myblood").animate({
                             width: '-=36'
-                        }, 300);
+                        }, 100);
                         //fire Me with real fire for 600 ms and fade out
                         var firImg = $("<img src='pic/firegif.gif'></img>");
                         firImg.css({
