@@ -165,7 +165,7 @@
 .Footer
 {
     position: absolute;
-    top: 1600px;
+    top: 1050px;
     width: 100%;
     height: 250px;
     /*background-color: #022240;*/
@@ -179,7 +179,7 @@
     background-image: url(Images/back.jpg);
     background-size: 30% 100%;
     width: 100%;
-    height: 1600px;
+    height: 1000px;
     
 }
 .layerCommunityContent
@@ -188,8 +188,9 @@
     top: 110px;
     width: 60%;
     margin-left: 20%;
-    height: 600px;
+    height: 800px;
     background-color: rgba(0, 0, 0, 0.7);
+    box-shadow: 5px 5px 4px 10px black;
 }
 .Post
 {

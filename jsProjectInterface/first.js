@@ -103,21 +103,89 @@ $(".FouthCard").mouseleave(function()
     {
         $(".FourthCardInfo").animate({"top":"600px"},300);
     })
-})
+});
 
-var Game=
-{
-    playerName:"Islam",
-    playerScore:451,
-    gameName:"Sudden",
-    time:Date.now().toString()
+(function(){
+    var Game=
+    {
+        playerName:"Islam",
+        playerScore:451,
+        gameName:"Sudden",
+        time:Date.now().toString()
 
+    }
+    var Game1=
+    {
+        playerName:"Islam",
+        playerScore:451,
+        gameName:"Sudden",
+        time:Date.now().toString()
+
+    }
+    var Game2=
+    {
+        playerName:"Islam",
+        playerScore:451,
+        gameName:"Sudden",
+        time:Date.now().toString()
+
+    }
+    var Game3=
+    {
+        playerName:"Islam",
+        playerScore:451,
+        gameName:"Sudden",
+        time:Date.now().toString()
+
+    }
+    var Game4=
+    {
+        playerName:"Islam",
+        playerScore:451,
+        gameName:"Sudden",
+        time:Date.now().toString()
+
+    }
+    var Game5=
+    {
+        playerName:"Islam",
+        playerScore:451,
+        gameName:"Sudden",
+        time:Date.now().toString()
+
+    }
+    var gameArr = [Game, Game1,Game2,Game3,Game4,Game5];
+    localStorage.setItem("ourGame",JSON.stringify(gameArr))
+    
+    })();
+
+
+//localStorage.setItem("ourGame",JSON.stringify(Game))
+
+ var CommunityData= JSON.parse(localStorage.getItem('ourGame'));
+var communityHeight = 800;
+var communityFooter = 1050;
+function DisplayCommunityData(){
+    for( var i = 0 ; i<CommunityData.length; i++){
+        if(CommunityData[i]['gameName'] == 'StarWars'){
+            var data = $("<div class='Post'><h3>"+ CommunityData[i]['gameName']
+                         +"</h3><h4 id='playerName'>"+CommunityData[i]['playerName']
+                         +"</h4><h4 id='playerScore'>Score : "+CommunityData[i]['playerScore']
+                         +"</h4><p>"+CommunityData[i]['time']+"</p></div>");
+
+            $(".layerCommunityContent").append(data);
+            if(i>5){
+                communityHeight+=100; communityFooter+=100;
+                $(".layerCommunityContent").css({
+                    height: communityHeight
+                })
+                $(".Footer").css({
+                    top: communityFooter
+                })
+             }
+        }
+    }
 }
-localStorage.setItem("ourGame",JSON.stringify(Game))
-
-JSON.parse(localStorage.getItem('ourGame'));
-
-
 
 
 
