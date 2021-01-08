@@ -13,7 +13,7 @@ $(".Navbar h1,img").click(function()
 })
 $(".FirstCard .startGame").click(function()
 {
-
+    window.location = "Star-Wars/star-Wars.html";
 })
 $(".SecondCard .startGame").click(function()
 {
