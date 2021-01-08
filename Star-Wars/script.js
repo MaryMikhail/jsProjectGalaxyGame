@@ -21,6 +21,7 @@ $(function () {
     var GroundTimer; // timer for ground generating
     var Shot; // it's an object of Shoot class -- the bullet
     var win = false; // it turns to true when i win
+    var GameIsOver = false;
     var upTimerId;
     var EnemyBulletTimer;
     var enemyBottomPos = 580; // initial position for Enemy
@@ -99,6 +100,9 @@ $(function () {
             duration : 500
         },
         buttons : {
+            "Play Again":function(){
+                
+            },
             "Share Score" : function(){
                 
             },
@@ -111,13 +115,14 @@ $(function () {
         }
     }); 
 
-    //IFFI block to execute those function to start game
+    //IFFI block to execute those function to initialize game window
     (function(){
         CreateGround();
    })();
     function startGame() { // I start The Game, just Call me
         AnimateMyGround()
         document.addEventListener("keydown", control);
+        document.addEventListener("keyup", controlFire);
         animateEnemy();
     }
     function createBox(i) {
@@ -227,7 +232,9 @@ $(function () {
             moveLeft();
         else if (e.key == "ArrowRight")
             moveRight();
-        else if (e.keyCode == 32)
+    }
+    function controlFire(e){
+         if (e.keyCode == 32)
             if (!(win || GameIsOver))
                 Fire();
     }
@@ -256,7 +263,7 @@ $(function () {
                 enemyLeftPos = parseInt(getComputedStyle(enemy).left);
                 arrFire[i].bottom += 20;
                 arrFire[i].visual.style.bottom = arrFire[i].bottom + "px";
-                if (arrFire[i].bottom > 680)
+                if (arrFire[i].bottom > 680  || GameIsOver)
                     Clear(arrFire[i].visual);
                 else if (
                     (enemyLeftPos + 50 >= arrFire[i].left) &&
@@ -295,12 +302,12 @@ $(function () {
                             $(this).remove();
                         });
                     }
-                    if ($("#enemyblood").width() <= 0) {
+                    if ($("#enemyblood").width() <= 0 && !win) {
                         enemy.src = "pic/showOff.gif";
                         $(enemy).css({
                             width: "300px"
                         });
-                        Clear(arrFire[i].visual);
+                        //Clear(arrFire[i].visual);
                         Win();
                     }
                 }
@@ -311,7 +318,7 @@ $(function () {
         grid.removeChild(shot);
         arrFire.shift();
     }
-    var GameIsOver = false;
+    
     function animateEnemy() {
         enemyLeftPos = parseInt(getComputedStyle(enemy).left);
         var newPos = starCraftLeftSpace;
@@ -341,7 +348,7 @@ $(function () {
                         arrEnemyFire.shift();
                         $("#myblood").animate({
                             width: '-=36'
-                        }, 300);
+                        }, 100);
                         //fire Me with real fire for 600 ms and fade out
                         var firImg = $("<img src='pic/firegif.gif'></img>");
                         firImg.css({
@@ -387,7 +394,7 @@ $(function () {
             backgroundColor: "red"
         }, 300);
     }
-    function ClearAllShotsOfAnyType(){
+    function ClearAllShotsOfAnyType(){ //remove me if i'm not helping
         for(i in arrFire){
             $(arrFire[i].visual).remove();
             arrFire.shift();}
@@ -396,18 +403,19 @@ $(function () {
             arrEnemyFire.shift();}
     }
     function GameOver() {
-        ClearAllShotsOfAnyType();
+        //ClearAllShotsOfAnyType();
         reSet();
         var cnfrm = confirm("You loose! Do you want to play again ?");
         if (!cnfrm) {
             GameIsOver = true;
             clearInterval(GroundTimer);
             clearInterval(EnemyBulletTimer);
-            clearInterval(upTimerId);
+           // clearInterval(upTimerId);
+
         }
     }
     function Win() {
-        ClearAllShotsOfAnyType();
+        //ClearAllShotsOfAnyType();
         reSet();
         $(enemyFire.visual).stop();
         $(enemyFire.visual).remove();
@@ -421,8 +429,8 @@ $(function () {
         } else {
             win = true;
             clearInterval(GroundTimer);
-            clearInterval(upTimerId);
-            clearInterval(EnemyBulletTimer);
+            //clearInterval(upTimerId);
+            //clearInterval(EnemyBulletTimer);
         }
     }
 })
