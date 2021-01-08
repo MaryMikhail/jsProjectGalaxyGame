@@ -1,4 +1,9 @@
-$(function() {
+var Scores;
+
+$( function() {
+    
+    Scores = JSON.parse(localStorage.getItem("CommunityScores")) || [];
+
     var score1 = 0,
         score2 = 0;
     var GameOver = false;
@@ -62,13 +67,43 @@ $(function() {
         },
         buttons : {
             "Share Score" : function(){
-                
+                var playerOneName = $("#usrName1").val();
+                var playerTwoName = $("#usrName2").val();
+                var winner, winnerScore;
+
+                if (score1 > score2)        
+                {
+                    winner = $("#usrName1").val();
+                    winnerScore = score2;
+                }
+                else if (score1 == score2)
+                {
+                    winner = "Draw";
+                }              
+                else
+                {
+                    winner = $("#usrName2").val();
+                    winnerScore = score1;
+                }             
+
+                if(winner != "Draw"){
+                    var scoreObj = {
+                        name : winner,
+                        game : "Space Race",
+                        score : winnerScore,
+                        date : new Date()
+                    }
+                    Scores.push(scoreObj);
+                    localStorage.setItem("CommunityScores",JSON.stringify(Scores));
+                    $('.ui-button:contains(Share Score)').hide();
+                }
             },
-            "Thanks": function(){
+            "Home": function(){
                 $(this).dialog("close");
+                location = "/index.html"
             },
             "Support Us" : function(){
-                
+                location = "/Games/Payment Page/payment.html";
             },
             "Play again" : function(){
                 reSet();
@@ -140,7 +175,7 @@ $(function() {
     }
     function GameIsOver() {
         var playerOneName = $("#usrName1").val();
-        var playerTwoName = $("#usrName2").val()
+        var playerTwoName = $("#usrName2").val();
         if (score1 > score2) 
             msg = playerOneName +" won";
          else if (score1 == score2) 

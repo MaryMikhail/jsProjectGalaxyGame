@@ -1,9 +1,14 @@
+var Scores;
 var picSrcHole = "/img/batlogo.jpg"; // the image not to be clicked
 var picSrcBuggs = "/img/jokerlogo.jpg"; // the image to be clicked
 var timerId, imgTimerId; // timer ids
 var nameEntered;
+var gameImgsPath = "/Games/suddenGame";
 
 $( function(){
+
+    Scores = JSON.parse(localStorage.getItem("CommunityScores")) || [];
+
     $("#welcomeScreen").dialog({
         resizable : false,
         width : 400,
@@ -19,10 +24,7 @@ $( function(){
         },
         buttons : {
             "Play" : function(){
-                if(!$("#usrName").val()){
-                    alert("Please enter your name")
-                }   
-                else{
+                if($("#usrName").val()){
                     $(this).dialog("close");
                 }
             },
@@ -36,7 +38,7 @@ $( function(){
         autoOpen : false,
         resizable : false,
         modal : true,
-        width : 500,
+        width : 650,
         show : {
             effect : "explode",
             duration : 500
@@ -47,13 +49,32 @@ $( function(){
         },
         buttons : {
             "Share Score" : function(){
-                
+                var scoreObj = {
+                    name : $("#usrName").val(),
+                    game : "Catch!",
+                    score : ($("#score").html().split(' ')[1]),
+                    date : new Date()
+                }
+                Scores.push(scoreObj);
+                localStorage.setItem("CommunityScores",JSON.stringify(Scores));
+                $('.ui-button:contains(Share Score)').hide();
             },
-            "Thanks": function(){
+            "Play again" : function(){
                 $(this).dialog("close");
             },
+            "Another User" : function(){
+                $(this).dialog("close");
+                $("#welcomeScreen").dialog('open');
+                $('.ui-button:contains(Share Score)').show();
+            },
+            "Home": function(){
+                $(this).dialog("close");
+                $('.ui-button:contains(Share Score)').show();
+                location = "/index.html"
+            },
             "Support Us" : function(){
-                
+                $('.ui-button:contains(Share Score)').show();
+                location = "/Games/Payment Page/payment.html";
             }
         }
     })
@@ -64,7 +85,7 @@ $(".titleDiv").children('p').click(function(){
 })
 
 $(".gameImgs").click(function(){
-    if($(this).attr('src') == picSrcBuggs){
+    if($(this).attr('src') == (gameImgsPath+picSrcBuggs)){
         $(this).effect('shake','left', 100);
         var count = parseInt($("#score").html().split(' ')[1]);
         count++;
@@ -73,7 +94,10 @@ $(".gameImgs").click(function(){
 })
 
 $("#btnStart").click(function(){
-    if($("#btnStart").val() == "Start Game" && $("#usrName").val()){
+    if(!$("#difficulty").val()){
+        alert("Choose game difficulty");
+        } 
+    else if($("#btnStart").val() == "Start Game" && $("#usrName").val()){
         $("#btnStart").val("Reset");
         var speed = $("#difficulty").val();
         switch(speed){
@@ -110,19 +134,19 @@ function getRandomNumber(min, max){
 function randomizeImgs(){
     var buggsId;
     for(var i=0; i<$(".gameDiv").children('img').length; i++){
-        if($(".gameDiv").children('img')[i].src.replace(/http:\/\/[0-9]+\.0\.0\.1:[0-9]+/,'') == picSrcBuggs){
+        if($(".gameDiv").children('img')[i].src.replace(/http:\/\/[0-9]+\.0\.0\.1:[0-9]+/,'') == (gameImgsPath + picSrcBuggs)){
             buggsId = parseInt($(".gameDiv").children('img')[i].getAttribute('id').slice(3,4));
         }
     }
     for(var i=0; i<$(".gameImgs").length; i++){
-        $(".gameImgs")[i].src = picSrcHole;            
+        $(".gameImgs")[i].src = (gameImgsPath+picSrcHole);            
     }
     
     do{
         var newBuggsId = getRandomNumber(1,8);
     }  
     while(newBuggsId == buggsId);
-    $("#img" + newBuggsId).attr('src',picSrcBuggs);
+    $("#img" + newBuggsId).attr('src',(gameImgsPath + picSrcBuggs));
 }
 
 function decrementTimer(){
@@ -161,7 +185,7 @@ function stopFunction(){
     $("#timer").html("Timer: 1:00");
     $("#score").html("Score: 0");
     for(var i=0; i<$(".gameImgs").length; i++){
-        $(".gameImgs")[i].src = picSrcHole;            
+        $(".gameImgs")[i].src = (gameImgsPath + picSrcHole);            
     }
 }
 

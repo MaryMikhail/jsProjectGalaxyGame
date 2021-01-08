@@ -2,7 +2,7 @@ var paymentData;
 
 $(function(){
 
-    paymentData = localStorage.getItem("PaymentClients") || [];
+    paymentData = JSON.parse(localStorage.getItem("PaymentClients")) || [];
 
     $("#radio-2").click(function(){
         $("#shipITI").show();
@@ -46,10 +46,6 @@ $(function(){
                 }
                 else
                 {
-                    $("#email").next().remove();
-                    $("#afterPayment").dialog("open");
-                    $("#afterPayment").children('p').html("Always visit for joyable games.")
-
                     var clientData = {
                         gameName : $("#gameName").val(),
                         clientName : $("#name").val(),
@@ -59,6 +55,10 @@ $(function(){
 
                     paymentData.push(clientData);
                     localStorage.setItem("PaymentClients",JSON.stringify(paymentData));
+
+                    $("#email").next().remove();
+                    $("#afterPayment").dialog("open");
+                    $("#afterPayment").children('p').html("Always visit for joyable games.")
                 }
             }
         }
