@@ -302,7 +302,7 @@ $(function () {
                             $(this).remove();
                         });
                     }
-                    if ($("#enemyblood").width() <= 0) {
+                    if ($("#enemyblood").width() <= 0 && !win) {
                         enemy.src = "pic/showOff.gif";
                         $(enemy).css({
                             width: "300px"
