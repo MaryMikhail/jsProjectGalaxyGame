@@ -71,7 +71,7 @@ $(function(){
                     date : new Date()
                 }
                 Scores.push(scoreObj);
-                localStorage.setItem("CommunityScores",JSON.stringify(Scores))
+                localStorage.setItem("CommunityScores",JSON.stringify(Scores));
                 $('.ui-button:contains(Share Score)').hide();
             },
             "Play again" : function(){
@@ -85,13 +85,16 @@ $(function(){
             },
             "Home": function(){
                 $(this).dialog("close");
+                location="../jsProjectInterface/index.html";
                 $('.ui-button:contains(Share Score)').show();
+
             },
             "Support Us" : function(){
                 $('.ui-button:contains(Share Score)').show();
             }
         }
     }); 
+
 
     $("#playAgainScreen").dialog({
         autoOpen : false,
