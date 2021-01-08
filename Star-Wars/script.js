@@ -100,6 +100,9 @@ $(function () {
             duration : 500
         },
         buttons : {
+            "Play Again":function(){
+                
+            },
             "Share Score" : function(){
                 
             },
