@@ -107,74 +107,18 @@ $(".FouthCard").mouseleave(function()
         $(".FourthCardInfo").animate({"top":"600px"},300);
     })
 });
-
-(function(){
-    var Game=
-    {
-        playerName:"Islam",
-        playerScore:451,
-        gameName:"Star Wars",
-        time:Date.now().toString()
-
-    }
-    var Game1=
-    {
-        playerName:"Islam",
-        playerScore:451,
-        gameName:"Sudden Game",
-        time:Date.now().toString()
-
-    }
-    var Game2=
-    {
-        playerName:"Islam",
-        playerScore:451,
-        gameName:"Puzzle Photo",
-        time:Date.now().toString()
-
-    }
-    var Game3=
-    {
-        playerName:"Islam",
-        playerScore:451,
-        gameName:"Space Race",
-        time:Date.now().toString()
-
-    }
-    var Game4=
-    {
-        playerName:"Islam",
-        playerScore:451,
-        gameName:"Star Wars",
-        time:Date.now().toString()
-
-    }
-    var Game5=
-    {
-        playerName:"Islam",
-        playerScore:451,
-        gameName:"Star Wars",
-        time:Date.now().toString()
-
-    }
-    var gameArr = [Game, Game1,Game2,Game3,Game4,Game5];
-    localStorage.setItem("ourGame",JSON.stringify(gameArr))
-    
-    })();
-
-
-//localStorage.setItem("ourGame",JSON.stringify(Game))
-
-var CommunityData= JSON.parse(localStorage.getItem('ourGame'));
+var CommunityData= JSON.parse(localStorage.getItem('CommunityScores'));
 var communityHeight = 800;
 var communityFooter = 1050;
 function DisplayCommunityData(Gamename){
+    if(CommunityData!=null)
+    {
     for( var i = 0 ; i<CommunityData.length; i++){
-        if(CommunityData[i]['gameName'] == Gamename){
-            var data = $("<div class='Post'><h3>"+ CommunityData[i]['gameName']
-                         +"</h3><h4 id='playerName'>"+CommunityData[i]['playerName']
-                         +"</h4><h4 id='playerScore'>Score : "+CommunityData[i]['playerScore']
-                         +"</h4><p>"+CommunityData[i]['time']+"</p></div>");
+        if(CommunityData[i]['game'] == Gamename){
+            var data = $("<div class='Post'><h3>"+ CommunityData[i]['game']
+                         +"</h3><h4 id='playerName'>"+CommunityData[i]['name']
+                         +"</h4><h4 id='playerScore'>Score : "+CommunityData[i]['score']
+                         +"</h4><p>"+CommunityData[i]['date']+"</p></div>");
 
             $(".layerCommunityContent").append(data);
             if(i>5){
@@ -188,6 +132,11 @@ function DisplayCommunityData(Gamename){
              }
         }
     }
+}
+else
+{
+    alert("There Is no Any Data");
+}
 }
 $(".gamesNavbar ul li a").click(function()
 {
@@ -217,8 +166,8 @@ var availableTags = [
     "star-Wars",
     "Puzzle",
     "Sudden-Game",
-    "Space-Race"
-  ];
+    "Space-Race"];
+
   $("#searchBox").autocomplete({
     source: availableTags,
     select:function(event, ui) {
