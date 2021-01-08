@@ -1,4 +1,8 @@
+var paymentData;
+
 $(function(){
+
+    paymentData = localStorage.getItem("PaymentClients") || [];
 
     $("#radio-2").click(function(){
         $("#shipITI").show();
@@ -37,11 +41,24 @@ $(function(){
                     $("#email").next().remove();
                     $("#email").after($("<p>Email is not correct</p>"));
                 }
+                else if(!$("#gameName").val()){
+                    $("#gameName").after($("<p>Choose a game</p>"));
+                }
                 else
                 {
                     $("#email").next().remove();
                     $("#afterPayment").dialog("open");
                     $("#afterPayment").children('p').html("Always visit for joyable games.")
+
+                    var clientData = {
+                        gameName : $("#gameName").val(),
+                        clientName : $("#name").val(),
+                        pricePaid : parseInt($("#price").html().split(' ')[1]),
+                        delivery : $(".shippingRadio:checked").val()
+                    }
+
+                    paymentData.push(clientData);
+                    localStorage.setItem("PaymentClients",JSON.stringify(paymentData));
                 }
             }
         }
@@ -68,7 +85,7 @@ $(function(){
         modal : true,
         buttons : {
             "Home Page" : function(){
-                window.location.replace("jsProjectGalaxyGame\puzzleGame\index.html");
+                location = "/index.html";
             }
         }
     })

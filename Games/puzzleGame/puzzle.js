@@ -9,6 +9,7 @@ var imgRandomArr = []; //array for random numbers between 1-16
 var randomNumber; //random number created
 var rightPositions = 0; //number of successful drags
 var imageFolder; //the folder of the selected image
+var gameImgsPath = "/Games/puzzleGame/";
 
 $(function(){
 
@@ -85,12 +86,13 @@ $(function(){
             },
             "Home": function(){
                 $(this).dialog("close");
-                location="../jsProjectInterface/index.html";
                 $('.ui-button:contains(Share Score)').show();
+                location = "/index.html";
 
             },
             "Support Us" : function(){
                 $('.ui-button:contains(Share Score)').show();
+                location = "/Games/Payment Page/payment.html";
             }
         }
     }); 
@@ -113,14 +115,13 @@ $(function(){
             "Play again" : function(){
                 $(this).dialog("close");
                 resetGame();
-
-                
             },
-            "Thanks": function(){
+            "Home": function(){
                 $(this).dialog("close");
+                location = "/index.html";
             },
             "Support Us" : function(){
-                
+                location = "/Games/Payment Page/payment.html";
             }
         }
     }); 
@@ -147,13 +148,13 @@ $(function(){
         //detect the selected option of images
         switch(selectedImage){
             case 1:
-                imageFolder = "/img1/";
+                imageFolder = gameImgsPath+"/img1/";
                 break;
             case 2:
-                imageFolder = "/img2/";
+                imageFolder = gameImgsPath+"/img2/";
                 break;
             case 3:
-                imageFolder = "/img3/";
+                imageFolder = gameImgsPath+"/img3/";
                 break;
         }
         
@@ -184,8 +185,7 @@ $(function(){
         $(".Puzzle_Img_Div").css("opacity",1);
         $("#winImage").animate({opacity: 0},0);
         $("body").css("background-image", "none");
-        
-    })
+    });
     
     //draggable functionality for the pics
     $(".Puzzle_Img_Div" ).draggable({
@@ -207,7 +207,7 @@ $(function(){
                 originalTop = this.offsetTop;
             }
             $("#bodyDiv").droppable("enable");
-        },
+        }
     });
 
     //droppable functionality for the grids

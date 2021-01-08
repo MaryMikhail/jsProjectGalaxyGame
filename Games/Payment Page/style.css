@@ -43,6 +43,10 @@
     margin: 20px;
 }
 
+#gameName + p{
+    margin-left: 20px;
+}
+
 #shippingMethodDiv{
     margin-top: 0px;
     margin-left: 20px;
