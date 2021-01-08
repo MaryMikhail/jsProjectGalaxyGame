@@ -1,6 +1,7 @@
 ///<reference path="./typings/globals/jquery/index.d.ts"/>
 
 var Moves; //number of moves
+var Scores; //local storage of scores
 var Target, DropTarget, DropDivTarget,DragDivTarget; //image and grid (object and id)
 var originalLeft, originalTop; //original position
 var originalLeftArr = [], originalTopArr = []; //array for orginal positions
@@ -10,9 +11,12 @@ var rightPositions = 0; //number of successful drags
 var imageFolder; //the folder of the selected image
 
 $(function(){
+
     //get number of moves done at the beginning "30"
     Moves = parseInt($("#No_Of_Moves").html().split(' ')[1]);
     
+    Scores = JSON.parse(localStorage.getItem('CommunityScores')) || [];
+
     //animation for the game title at the top
     setInterval(function(){
         $("#title").css('border', '2px solid ' + getRandomColor())
@@ -49,7 +53,7 @@ $(function(){
         autoOpen : false,
         resizable : false,
         modal : true,
-        width : 500,
+        width : 650,
         show : {
             effect : "explode",
             duration : 500
@@ -60,6 +64,53 @@ $(function(){
         },
         buttons : {
             "Share Score" : function(){
+                var scoreObj = {
+                    name : $("#usrName").val(),
+                    game : "Puzzle Photo",
+                    score : (30 - Moves),
+                    date : new Date()
+                }
+                Scores.push(scoreObj);
+                localStorage.setItem("CommunityScores",JSON.stringify(Scores))
+                $('.ui-button:contains(Share Score)').hide();
+            },
+            "Play again" : function(){
+                $(this).dialog("close");
+                $("#btnReset").trigger('click');
+            },
+            "Another User" : function(){
+                $(this).dialog("close");
+                $("#btnReset").trigger('click');
+                $('.ui-button:contains(Share Score)').show();
+            },
+            "Home": function(){
+                $(this).dialog("close");
+                $('.ui-button:contains(Share Score)').show();
+            },
+            "Support Us" : function(){
+                $('.ui-button:contains(Share Score)').show();
+            }
+        }
+    }); 
+
+    $("#playAgainScreen").dialog({
+        autoOpen : false,
+        resizable : false,
+        modal : true,
+        width : 500,
+        show : {
+            effect : "explode",
+            duration : 500
+        },
+        hide : {
+            effect:"blind",
+            duration : 500
+        },
+        buttons : {
+            "Play again" : function(){
+                $(this).dialog("close");
+                resetGame();
+
                 
             },
             "Thanks": function(){
@@ -123,21 +174,14 @@ $(function(){
     
     //click event on the reset button 
     $("#btnReset").on("click",function(){
-        //reset the moves and swith between the start and reset buttons
-        $("#No_Of_Moves").html("Moves: 30");
-        $("#btnStart").attr("disabled", false);
-        $("#btnReset").attr("disabled", true);
-        
-        for(var i=0; i<16; i++){
-            $(`.${i+1}`).offset({top:originalTopArr[i], left:originalLeftArr[i]});
-        }
+        //reset the moves and switch between the start and reset buttons
+        resetGame();
         
         //when resetting hide the grids, show the whole image and do fireworks at the back-ground
         $(".Puzzle_Img_Div").css("opacity",1);
         $("#winImage").animate({opacity: 0},0);
         $("body").css("background-image", "none");
         
-        imgRandomArr = [];
     })
     
     //draggable functionality for the pics
@@ -189,6 +233,10 @@ $(function(){
                 $("#winImage").animate({opacity: 1, zIndex : 1},250); //show the wining image 
                 $("body").css("background-image", "url(fireworks.gif)"); //make celebration
                 setTimeout($("#scoreScreen").dialog("open").children('p').html("Congratulations!!<br>You made it in " + (30-Moves) + " moves."),3000);
+            }
+            else if(Moves <= 0)
+            {
+                $("#playAgainScreen").dialog("open");
             }     
         },
         over : function(event, ui){
@@ -231,5 +279,25 @@ $(function(){
         return 0;
     }
 
+    function resetGame(){
+            $("#No_Of_Moves").html("Moves: 30");
+            $("#btnStart").attr("disabled", false);
+            $("#btnReset").attr("disabled", true);
+
+            for(var i=0; i<16; i++){
+                $(`.${i+1}`).offset({top:originalTopArr[i], left:originalLeftArr[i]});
+
+            imgRandomArr = [];
+
+            rightPositions = 0;
+
+            Moves=30;
+        }
+    }
 });
 
+function displayScores(){
+    var scoreList = JSON.parse(localStorage.getItem("CommunityScores"));
+    for(var i=0; i<scoreList.length; i++)
+        console.log(`Player ${scoreList[i].name} scored ${scoreList[i].score} in ${scoreList[i].game} on ${scoreList[i].date}`);
+}
