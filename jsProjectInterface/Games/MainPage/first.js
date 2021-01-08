@@ -13,19 +13,19 @@ $(".Navbar h1,img").click(function()
 })
 $(".FirstCard .startGame").click(function()
 {
-    window.location = "Star-Wars/star-Wars.html";
+    window.location = "/Games/Star-Wars/star-Wars.html";
 })
 $(".SecondCard .startGame").click(function()
 {
-    
+    window.location = "/Games/puzzleGame/index.html";
 })
 $(".ThirdCard .startGame").click(function()
 {
-    
+    window.location = "/Games/suddenGame/main.html";
 })
 $(".FouthCard .startGame").click(function()
 {
-    
+    window.location = "/Games/Space-Race/Space-Race.html";
 })
 
 // First Card Animation 
