@@ -1,4 +1,7 @@
-///<reference path="./typings/globals/jquery/index.d.ts" />
+///<reference path="../../typings/globals/jquery/index.d.ts" />
+
+
+
 $(".Navbar ul li a").mouseenter(function()
 {
     $(this).css("color","#BF900F");
@@ -9,7 +12,7 @@ $(".Navbar ul li a").mouseleave(function()
 })
 $(".Navbar h1,img").click(function()
 {
-    window.location="index.html";
+    window.location="/index.html";
 })
 $(".FirstCard .startGame").click(function()
 {
@@ -17,11 +20,11 @@ $(".FirstCard .startGame").click(function()
 })
 $(".SecondCard .startGame").click(function()
 {
-    window.location = "/Games/puzzleGame/index.html";
+    window.location = "/Games/puzzleGame/Puzzle.html";
 })
 $(".ThirdCard .startGame").click(function()
 {
-    window.location = "/Games/suddenGame/main.html";
+    window.location = "/Games/suddenGame/Sudden-Game.html";
 })
 $(".FouthCard .startGame").click(function()
 {
@@ -192,6 +195,54 @@ $(".gamesNavbar ul li a").click(function()
     DisplayCommunityData($(this).text());
     return false;
 })
+$(".gamesNavbar a").mouseenter(function()
+{
+    $(event.target).css({border:"solid 2px #ffffff",color:"#BF900F"}); 
+})
+$(".gamesNavbar a").mouseleave(function()
+{
+    $(event.target).css({border:"none",color:"#ffffff"});  
+})
+
+$(".FourthCardInfo a,.ThirdCardInfo a,.SecondCardInfo a,.FirstCardInfo a").mouseenter(function()
+{
+    $(event.target).css({border:"solid 2px #ffffff",color:"#BF900F"}); 
+})
+$(".FourthCardInfo a,.ThirdCardInfo a,.SecondCardInfo a,.FirstCardInfo a").mouseleave(function()
+{
+    $(event.target).css({border:"solid 2px #FFC828",color:"#ffffff"}); 
+})
+
+var availableTags = [
+    "star-Wars",
+    "Puzzle",
+    "Sudden-Game",
+    "Space-Race"
+  ];
+  $("#searchBox").autocomplete({
+    source: availableTags,
+    select:function(event, ui) {
+        if(ui.item.value=="star-Wars")
+        {
+            location="/Games/Star-Wars/star-Wars.html"; 
+        }
+        else if(ui.item.value=="Puzzle")
+        {
+            location="Games/puzzleGame/Puzzle.html";
+        }
+        else if(ui.item.value=="Sudden-Game")
+        {
+            location="/Games/suddenGame/Sudden-Game.html";
+        }
+        else if(ui.item.value=="Space-Race")
+        {
+            location="/Games/Space-Race/Space-Race.html";
+        }
+        
+        
+    }
+    
+  });
 
 
 

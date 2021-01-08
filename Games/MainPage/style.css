@@ -142,6 +142,19 @@
     text-align: center;
     background-color: rgba(0, 0, 0, 0.4);
 }
+.FourthCardInfo a,
+.ThirdCardInfo a,
+.SecondCardInfo a,
+.FirstCardInfo a 
+{
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    user-select: none;
+    color: antiquewhite;
+    padding: 7px;
+    border: solid 2px #FFC828;
+}
 
 .Footer {
     position: absolute;

@@ -4,37 +4,40 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Galaxy Games</title>
+    <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css"> -->
+    <link rel="stylesheet" href="jquery-ui-1.12.1.custom/jquery-ui.min.css">
     <link rel="stylesheet" href="/Games/MainPage/style.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Yeon+Sung&display=swap" rel="stylesheet">
 </head>
-
 <body>
     <div>
         <div class="Navbar">
                 <img src="/Games/MainPage/Images/oie_transparent.png" alt=""/>
                 <h1>Game Galaxy</h1>
-            <input placeholder="What are you looking for ?" type="text" />
+            <input onfocus="this.select();" id="searchBox" placeholder="What are you looking for ?" type="text" />
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="/Games/Community/community.html">Community</a></li>
-                <li><a href="#footerID">About</a></li>
+                <li><a href="#footerID">Contact</a></li>
             </ul>
         </div>
         <div class="appContent">
             <div class="FirstCard">
                 <div class="startGame">Star Wars</div>
                 <div class="FirstCardInfo">
-                    <p> Live your STAR WAR dreams as you fight with your favorite dark and light side heroes across iconic locations to become master of the galaxy </p>
+                    <p> Live your STAR WAR dreams as you fight with your favorite dark and light side
+                         heroes across iconic locations to become master of the galaxy </p>
+                         <a href="/Games/Star-Wars/star-Wars.html">Play Now</a>
                 </div>
             </div>
-           
-
             <div class="SecondCard">
                 <div class="startGame">Puzzle</div>
                 <div class="SecondCardInfo">
-                    <p>Puzzle is a simple and entertaining puzzle game. In  Picture Puzzle a picture is torn down into smaller pieces of pictures and is scrambled from their correct position.
+                    <p>Puzzle is an entertaining game. In  Picture Puzzle a picture is torn down into smaller pieces.
                          You have to move the pieces to their correct position to complete the puzzle.</p>
+                         <a href="/Games/puzzleGame/Puzzle.html">Play Now</a>
                 </div>
             </div>
 
@@ -42,13 +45,17 @@
                 <div class="startGame">Sudden Game</div>
                 <div class="ThirdCardInfo">
                     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dicta, odio!</p>
+                    <a href="/Games/suddenGame/Sudden-Game.html">Play Now</a>
                 </div>
             </div>
 
             <div class="FouthCard">
                 <div class="startGame">Space Race</div>
                 <div class="FourthCardInfo">
-                    <p>It's a multiplayer game where two players each control a rocket ship, with the goal of being the first to move their ship from the bottom of the screen to the top. Along the way are asteroids, which the players must avoid</p>
+                    <p>It's a multiplayer game where two players each control a rocket ship, with the
+                         goal of being the first to move their ship from the bottom of the screen to the
+                          top. Along the way are asteroids, which the players must avoid</p>
+                        <a href="/Games/Space-Race/Space-Race.html">Play Now</a>
                 </div>
             </div>
 
@@ -56,7 +63,10 @@
         <div id="footerID" class="Footer">
         </div>
     </div>
+    
     <script src="/Games/js/jquery-3.5.1.min.js"></script>
+    <script src="jquery-ui-1.12.1.custom/external/jquery/jquery.js"></script>
+    <script src="jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
     <script src="/Games/MainPage/first.js"></script>
 </body>
 
