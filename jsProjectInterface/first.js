@@ -110,7 +110,7 @@ $(".FouthCard").mouseleave(function()
     {
         playerName:"Islam",
         playerScore:451,
-        gameName:"Sudden",
+        gameName:"Star Wars",
         time:Date.now().toString()
 
     }
@@ -118,7 +118,7 @@ $(".FouthCard").mouseleave(function()
     {
         playerName:"Islam",
         playerScore:451,
-        gameName:"Sudden",
+        gameName:"Sudden Game",
         time:Date.now().toString()
 
     }
@@ -126,7 +126,7 @@ $(".FouthCard").mouseleave(function()
     {
         playerName:"Islam",
         playerScore:451,
-        gameName:"Sudden",
+        gameName:"Puzzle Photo",
         time:Date.now().toString()
 
     }
@@ -134,7 +134,7 @@ $(".FouthCard").mouseleave(function()
     {
         playerName:"Islam",
         playerScore:451,
-        gameName:"Sudden",
+        gameName:"Space Race",
         time:Date.now().toString()
 
     }
@@ -142,7 +142,7 @@ $(".FouthCard").mouseleave(function()
     {
         playerName:"Islam",
         playerScore:451,
-        gameName:"Sudden",
+        gameName:"Star Wars",
         time:Date.now().toString()
 
     }
@@ -150,7 +150,7 @@ $(".FouthCard").mouseleave(function()
     {
         playerName:"Islam",
         playerScore:451,
-        gameName:"Sudden",
+        gameName:"Star Wars",
         time:Date.now().toString()
 
     }
@@ -162,12 +162,12 @@ $(".FouthCard").mouseleave(function()
 
 //localStorage.setItem("ourGame",JSON.stringify(Game))
 
- var CommunityData= JSON.parse(localStorage.getItem('ourGame'));
+var CommunityData= JSON.parse(localStorage.getItem('ourGame'));
 var communityHeight = 800;
 var communityFooter = 1050;
-function DisplayCommunityData(){
+function DisplayCommunityData(Gamename){
     for( var i = 0 ; i<CommunityData.length; i++){
-        if(CommunityData[i]['gameName'] == 'StarWars'){
+        if(CommunityData[i]['gameName'] == Gamename){
             var data = $("<div class='Post'><h3>"+ CommunityData[i]['gameName']
                          +"</h3><h4 id='playerName'>"+CommunityData[i]['playerName']
                          +"</h4><h4 id='playerScore'>Score : "+CommunityData[i]['playerScore']
@@ -186,6 +186,12 @@ function DisplayCommunityData(){
         }
     }
 }
+$(".gamesNavbar ul li a").click(function()
+{
+    $(".layerCommunityContent").html(" ");
+    DisplayCommunityData($(this).text());
+    return false;
+})
 
 
 
