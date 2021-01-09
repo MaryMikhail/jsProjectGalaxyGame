@@ -115,17 +115,35 @@ $(function () {
                 localStorage.setItem("CommunityScores",JSON.stringify(Scores));
                 $('.ui-button:contains(Share Score)').hide();
             },
-            "Play again" : function(){
-                reSet();
+            "Play Again": function () {
+                AnimateMyGround();
+                if (win) {
+                    win = false;
+                    enemy.src = "Pic/enemy1.png";
+                    $(enemy).css({
+                        width: "110px"
+                    });
+                } else {
+                    GameIsOver = false;
+                }
+                reSet(); //reset blood bar
+                animateEnemy();
                 $(this).dialog("close");
                 $('.ui-button:contains(Share Score)').show();
-                GameOver = false;
-            },     
+            },
             "Another User" : function(){
-                $(this).dialog("close");
+                if (win) {
+                    win = false;
+                    enemy.src = "Pic/enemy1.png";
+                    $(enemy).css({
+                        width: "110px"
+                    });
+                } else {
+                    GameIsOver = false;
+                }
                 reSet();
+                $(this).dialog("close");
                 $('.ui-button:contains(Share Score)').show();
-                GameOver = false;
                 $("#welcomeScreen").dialog("open");
             },
             "Home": function(){
@@ -438,6 +456,7 @@ $(function () {
         GameIsOver = true;
         clearInterval(GroundTimer);
         clearInterval(upTimerId);
+        $('.ui-button:contains(Share Score)').hide();
         $("#scoreScreen").dialog("open").html('You Loose');
     }
 
