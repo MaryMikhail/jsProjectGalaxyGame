@@ -51,7 +51,7 @@ $( function(){
             "Share Score" : function(){
                 var scoreObj = {
                     name : $("#usrName").val(),
-                    game : "Catch!",
+                    game : "Sudden Game",
                     score : ($("#score").html().split(' ')[1]),
                     date : new Date()
                 }

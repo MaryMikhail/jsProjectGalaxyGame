@@ -1,4 +1,9 @@
+var Scores;
+
 $(function () {
+
+    Scores = JSON.parse(localStorage.getItem("CommunityScores")) || [];
+
     var arrbox1 = []; //list of arrays saving every single object that ground consist of 
     var arrbox2 = [];
     var arrbox3 = [];
@@ -72,9 +77,7 @@ $(function () {
         },
         buttons: {
             "Play": function () {
-                if (!$("#usrName").val()) {
-                    alert("Please enter your name")
-                } else {
+                if ($("#usrName").val()) {
                     $(this).dialog("close");
                     startGame();
                 }
@@ -91,7 +94,7 @@ $(function () {
         autoOpen: false,
         resizable: false,
         modal: true,
-        width: 500,
+        width: 650,
         show: {
             effect: "explode",
             duration: 500
@@ -100,27 +103,40 @@ $(function () {
             effect: "blind",
             duration: 500
         },
-        buttons: {
-            "Play Again": function () {
-                AnimateMyGround();
-                if (win) {
-                    win = false;
-                    enemy.src = "Pic/enemy1.png";
-                    $(enemy).css({
-                        width: "110px"
-                    });
-                    animateEnemy();
-                } else {
-                    GameIsOver = false;
+        buttons : {
+            "Share Score" : function(){
+                var scoreObj = {
+                    name : $("#usrName").val(),
+                    game : "Star Wars",
+                    score : "Win",
+                    date : new Date().toLocaleString()
                 }
-                reSet(); //reset blood bar
-                $(this).dialog("close");
+                Scores.push(scoreObj);
+                localStorage.setItem("CommunityScores",JSON.stringify(Scores));
+                $('.ui-button:contains(Share Score)').hide();
             },
-            "Share Score": function () {},
-            "Thanks": function () {
+            "Play again" : function(){
+                reSet();
                 $(this).dialog("close");
+                $('.ui-button:contains(Share Score)').show();
+                GameOver = false;
+            },     
+            "Another User" : function(){
+                $(this).dialog("close");
+                reSet();
+                $('.ui-button:contains(Share Score)').show();
+                GameOver = false;
+                $("#welcomeScreen").dialog("open");
             },
-            "Support Us": function () {}
+            "Home": function(){
+                $(this).dialog("close");
+                $('.ui-button:contains(Share Score)').show();
+                location = "/index.html";
+            },
+            "Support Us" : function(){
+                $('.ui-button:contains(Share Score)').show();
+                location = "/Games/Payment Page/payment.html";
+            }
         }
     });
     //IFFI block to execute those function to initialize game window

@@ -1,6 +1,4 @@
-var Scores;
-
-$( function() {
+$(function() {
     
     Scores = JSON.parse(localStorage.getItem("CommunityScores")) || [];
 
@@ -50,7 +48,7 @@ $( function() {
                 $(this).children('p').html("<b>Player '1'</b> on the right <b>Up/Down</b> <br><b>Player '2'</b> on the left <b>W/S</b>").css({"text-align":"center","margin-top":10})
             }
         }
-    });
+    }); 
 
     $("#scoreScreen").dialog({
         autoOpen : false,
@@ -73,8 +71,8 @@ $( function() {
 
                 if (score1 > score2)        
                 {
-                    winner = $("#usrName1").val();
-                    winnerScore = score2;
+                    winner = playerOneName;
+                    winnerScore = score1;
                 }
                 else if (score1 == score2)
                 {
@@ -82,8 +80,8 @@ $( function() {
                 }              
                 else
                 {
-                    winner = $("#usrName2").val();
-                    winnerScore = score1;
+                    winner = playerTwoName;
+                    winnerScore = score2;
                 }             
 
                 if(winner != "Draw"){
@@ -91,24 +89,27 @@ $( function() {
                         name : winner,
                         game : "Space Race",
                         score : winnerScore,
-                        date : new Date()
+                        date : new Date().toLocaleString()
                     }
                     Scores.push(scoreObj);
                     localStorage.setItem("CommunityScores",JSON.stringify(Scores));
                     $('.ui-button:contains(Share Score)').hide();
                 }
             },
-            "Home": function(){
-                $(this).dialog("close");
-                location = "/index.html"
-            },
-            "Support Us" : function(){
-                location = "/Games/Payment Page/payment.html";
-            },
             "Play again" : function(){
                 reSet();
                 $(this).dialog("close");
+                $('.ui-button:contains(Share Score)').show();
                 GameOver = false;
+            },     
+            "Home": function(){
+                $(this).dialog("close");
+                $('.ui-button:contains(Share Score)').show();
+                location = "/index.html";              
+            },
+            "Support Us" : function(){
+                $('.ui-button:contains(Share Score)').show();
+                location = "/Games/Payment Page/payment.html";
             }
         }
     });
