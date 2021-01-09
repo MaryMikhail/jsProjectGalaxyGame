@@ -21,7 +21,7 @@
     top: 25px;
     left: 100px;
     position: absolute;
-    color: aliceblue;
+    color: #B467E0;;
     font-size: 1.9rem;
     display: inline-block;
     user-select: none;
@@ -56,8 +56,8 @@
 .Navbar a {
     user-select: none;
     text-decoration: none;
-    font-size: 1.6rem;
-    font-weight: 700;
+    font-size: 1.5rem;
+    font-weight: 550;
     color: antiquewhite;
 }
 
@@ -182,23 +182,34 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     position: relative;
 }
+
+.secondFooterCol > div > a:hover{
+    color: #BF900F;
+}
+
+.secondFooterCol > div > a{
+    color: #B467E0;
+}
+
+
 .firstFooterCol,.secondFooterCol,.fourthFooterCol,.thirdFooterCol
 {
     display: flex;
     flex-direction: column;
     
-    align-items: flex-start;
+    align-items: center;
     padding: 0px 10px;
     font-size: 1.3rem;
    
+    justify-content: center;
 }
 .footerHead1::after
 {
     position: absolute;
     content: "";
-    width: 30%;
+    width: 40%;
     height: 3px;
-    left:60px;
+    left:85px;
     top: 50px;
     background-color: #BF900F;
 
@@ -208,7 +219,7 @@
 {
     position: absolute;
     content: "";
-    width: 50%;
+    width: 80%;
     height: 3px;
     left:11px;
     top: 50px;
@@ -221,7 +232,7 @@
 {
     position: absolute;
     content: "";
-    width: 60%;
+    width: 85%;
     height: 3px;
     left:11px;
     top: 52px;
@@ -233,13 +244,19 @@
 {
     position: absolute;
     content: "";
-    width: 50%;
+    width: 65%;
     height: 3px;
-    left:30px;
+    left:35px;
     top: 51px;
     background-color: #BF900F;
 
 
+}
+
+.footerText{
+    display: flex;
+    justify-content: center;
+    align-content: center;
 }
 
 

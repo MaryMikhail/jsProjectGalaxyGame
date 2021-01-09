@@ -53,7 +53,7 @@ $( function(){
                     name : $("#usrName").val(),
                     game : "Sudden Game",
                     score : ($("#score").html().split(' ')[1]),
-                    date : new Date()
+                    date : new Date().toLocaleString()
                 }
                 Scores.push(scoreObj);
                 localStorage.setItem("CommunityScores",JSON.stringify(Scores));

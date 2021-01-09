@@ -60,6 +60,9 @@ $(function(){
                     $("#afterPayment").dialog("open");
                     $("#afterPayment").children('p').html("Always visit for joyable games.")
                 }
+            },
+            "Home" : function(){
+                location = "/index.html";
             }
         }
     });

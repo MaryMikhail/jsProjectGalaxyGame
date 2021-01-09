@@ -69,7 +69,7 @@ $(function(){
                     name : $("#usrName").val(),
                     game : "Puzzle Photo",
                     score : (30 - Moves),
-                    date : new Date()
+                    date : new Date().toLocaleString()
                 }
                 Scores.push(scoreObj);
                 localStorage.setItem("CommunityScores",JSON.stringify(Scores));

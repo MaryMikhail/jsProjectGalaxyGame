@@ -19,7 +19,7 @@
     top: 25px;
     left: 100px;
     position: absolute;
-    color: aliceblue;
+    color: #B467E0;
     font-size: 1.9rem;
     display: inline-block;
     user-select: none;
@@ -45,6 +45,7 @@
     background-image: url(/Games/MainPage/Images/nav.png);
     height: 60px;
     z-index: 50;
+    font-family: 'Josefin Sans', sans-serif;
 }
 .gamesNavbar
 {
@@ -59,19 +60,19 @@
 .Navbar a {
     user-select: none;
     text-decoration: none;
-    font-size: 1.6rem;
-    font-weight: 700;
+    font-size: 1.5rem;
+    font-weight: 550;
     color: antiquewhite;
 }
 .gamesNavbar a
 {
-    
     user-select: none;
     text-decoration: none;
     font-size: 1rem;
-    font-weight: 500;
+    font-weight: 750;
     color: antiquewhite;
     padding: 7px;
+    font-family: 'Source Code Pro', monospace;
 }
 .Navbar ul   {
     position: absolute;
@@ -82,7 +83,7 @@
 .gamesNavbar ul
 {
     position: absolute;
-    left: 210px;
+    left: 175px;
     top: 25px;
     list-style: none;
 }
@@ -96,17 +97,10 @@
 }
 .gamesNavbar li
 {
-    width: 120px;
+    width: 140px;
     display: inline-block;
 }
-.Footer
-{
-    position: absolute;
-    top: 1050px;
-    width: 100%;
-    height: 250px;
-    background-image: url(/Games/MainPage/Images/nav.png);
-}
+
 .communityContent
 {
     position: absolute;
@@ -133,12 +127,14 @@
     margin-left: 25%;
     width: 50%;
     border: solid 3px #ffffff;
+    font-family: 'Source Code Pro', monospace;
 }
 .Post h3
 {
     color: #BF900F;
     padding: 10px;
     text-align: center;
+    font-weight: 600;
 }
 #playerName
 {
@@ -157,4 +153,106 @@
 .Post p
 {
     padding-left: 5px;
+    font-weight: 500;
 }
+
+.Footer
+{
+    position: absolute;
+    top: 1050px;
+    width: 100%;
+    height: 250px;
+    background-image: url(/Games/MainPage/Images/nav.png);
+    padding: 30px 0px;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    color: white;
+}
+
+.footerHead1,.footerHead2,.footerHead3,.footerHead4
+{
+    text-align: center;
+    padding: 17px  10px;
+    font-size: 1.7rem;
+    font-weight: 700;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    position: relative;
+}
+
+.secondFooterCol > div > a:hover{
+    color: #BF900F;
+}
+
+.secondFooterCol > div > a{
+    color: #B467E0;
+}
+
+
+.firstFooterCol,.secondFooterCol,.fourthFooterCol,.thirdFooterCol
+{
+    display: flex;
+    flex-direction: column;
+    
+    align-items: center;
+    padding: 0px 10px;
+    font-size: 1.3rem;
+   
+    justify-content: center;
+}
+.footerHead1::after
+{
+    position: absolute;
+    content: "";
+    width: 40%;
+    height: 3px;
+    left:85px;
+    top: 50px;
+    background-color: #BF900F;
+
+
+}
+.footerHead2::after
+{
+    position: absolute;
+    content: "";
+    width: 80%;
+    height: 3px;
+    left:11px;
+    top: 50px;
+    background-color: #BF900F;
+    
+
+
+}
+.footerHead3::after
+{
+    position: absolute;
+    content: "";
+    width: 85%;
+    height: 3px;
+    left:11px;
+    top: 52px;
+    background-color: #BF900F;
+
+
+}
+.footerHead4::after
+{
+    position: absolute;
+    content: "";
+    width: 65%;
+    height: 3px;
+    left:35px;
+    top: 51px;
+    background-color: #BF900F;
+
+
+}
+
+.footerText{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+

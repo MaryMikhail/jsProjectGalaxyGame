@@ -113,6 +113,8 @@ var communityFooter = 1050;
 function DisplayCommunityData(Gamename){
     if(CommunityData!=null)
     {
+        communityHeight = 800;
+        communityFooter = 1050;
     for( var i = 0 ; i<CommunityData.length; i++){
         if(CommunityData[i]['game'] == Gamename){
             var data = $("<div class='Post'><h3>"+ CommunityData[i]['game']
@@ -122,7 +124,7 @@ function DisplayCommunityData(Gamename){
 
             $(".layerCommunityContent").append(data);
             if(i>5){
-                communityHeight+=120; communityFooter+=120;
+                communityHeight+=150; communityFooter+=128;
                 $(".layerCommunityContent").css({
                     height: communityHeight
                 })
