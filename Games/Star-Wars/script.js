@@ -457,7 +457,7 @@ $(function () {
         clearInterval(GroundTimer);
         clearInterval(upTimerId);
         $('.ui-button:contains(Share Score)').hide();
-        $("#scoreScreen").dialog("open").html('You Loose');
+        $("#scoreScreen").dialog("open").html('You Lose, try again');
     }
 
     function Win() {
@@ -465,6 +465,6 @@ $(function () {
         $(enemyFire.visual).remove();
         win = true;
         clearInterval(GroundTimer);
-        $("#scoreScreen").dialog("open").html('Nice You Won');
+        $("#scoreScreen").dialog("open").html(`Good game, ${$("#usrName").val()} won`);
     }
 })

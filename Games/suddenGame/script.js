@@ -183,7 +183,7 @@ function decrementTimer(){
 function stopFunction(){
     clearTimeout(timerId);
     clearInterval(imgTimerId);
-    $("#timer").html("Timer: 1:00");
+    $("#timer").html("Timer: 0:20");
     $("#score").html("Score: 0");
     for(var i=0; i<$(".gameImgs").length; i++){
         $(".gameImgs")[i].src = (gameImgsPath + picSrcHole);            

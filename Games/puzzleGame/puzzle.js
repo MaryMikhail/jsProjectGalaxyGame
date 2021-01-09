@@ -81,6 +81,7 @@ $(function(){
             },
             "Another User" : function(){
                 $(this).dialog("close");
+                $("#welcomeScreen").dialog("open");
                 $("#btnReset").trigger('click');
                 $('.ui-button:contains(Share Score)').show();
             },
