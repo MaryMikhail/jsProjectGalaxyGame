@@ -4,7 +4,7 @@ var picSrcBuggs = "/img/jokerlogo.jpg"; // the image to be clicked
 var timerId, imgTimerId; // timer ids
 var nameEntered;
 var gameImgsPath = "/Games/suddenGame";
-
+var GameScore; //final GameScore //M.Shawky
 $( function(){
 
     Scores = JSON.parse(localStorage.getItem("CommunityScores")) || [];
@@ -52,7 +52,7 @@ $( function(){
                 var scoreObj = {
                     name : $("#usrName").val(),
                     game : "Sudden Game",
-                    score : ($("#score").html().split(' ')[1]),
+                    score : GameScore,
                     date : new Date().toLocaleString()
                 }
                 Scores.push(scoreObj);
@@ -170,6 +170,7 @@ function decrementTimer(){
         if(min == 0 & sec == 0){
             $("#btnStart").val("Start Game");
             $("#scoreScreen").dialog("open").html('Your score is ' + parseInt($("#score").html().split(' ')[1])).css("text-align","center");
+            GameScore = parseInt($("#score").html().split(' ')[1]);
             stopFunction();
         }
         else{
