@@ -122,8 +122,11 @@ function DisplayCommunityData(Gamename){
 
             $(".layerCommunityContent").append(data);
             if(i>5){
-                communityHeight+=100; communityFooter+=100;
+                communityHeight+=120; communityFooter+=120;
                 $(".layerCommunityContent").css({
+                    height: communityHeight
+                })
+                $(".communityContent").css({
                     height: communityHeight
                 })
                 $(".Footer").css({
