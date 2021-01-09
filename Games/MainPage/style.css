@@ -49,6 +49,8 @@
     background-image: url(Images/nav.png);
     height: 60px;
     z-index: 50;
+    font-family: 'Josefin Sans', sans-serif;
+    
 }
 
 .Navbar a {
@@ -196,7 +198,7 @@
     content: "";
     width: 30%;
     height: 3px;
-    left:85px;
+    left:60px;
     top: 50px;
     background-color: #BF900F;
 
@@ -208,9 +210,10 @@
     content: "";
     width: 50%;
     height: 3px;
-    left:35px;
+    left:11px;
     top: 50px;
     background-color: #BF900F;
+    
 
 
 }
@@ -220,8 +223,8 @@
     content: "";
     width: 60%;
     height: 3px;
-    left:35px;
-    top: 55px;
+    left:11px;
+    top: 52px;
     background-color: #BF900F;
 
 
@@ -232,8 +235,8 @@
     content: "";
     width: 50%;
     height: 3px;
-    left:50px;
-    top: 50px;
+    left:30px;
+    top: 51px;
     background-color: #BF900F;
 
 
