@@ -109,39 +109,40 @@ $(".FouthCard").mouseleave(function()
 });
 var CommunityData= JSON.parse(localStorage.getItem('CommunityScores'));
 var communityHeight = 800;
-var communityFooter = 1050;
+var communityFooterTop = 1050;
 function DisplayCommunityData(Gamename){
-    if(CommunityData!=null)
-    {
+    if(CommunityData!=null){
         communityHeight = 800;
-        communityFooter = 1050;
-    for( var i = 0 ; i<CommunityData.length; i++){
-        if(CommunityData[i]['game'] == Gamename){
-            var data = $("<div class='Post'><h3>"+ CommunityData[i]['game']
-                         +"</h3><h4 id='playerName'>"+CommunityData[i]['name']
-                         +"</h4><h4 id='playerScore'>Score : "+CommunityData[i]['score']
-                         +"</h4><p>"+CommunityData[i]['date']+"</p></div>");
-
-            $(".layerCommunityContent").append(data);
-            if(i>5){
-                communityHeight+=150; communityFooter+=128;
-                $(".layerCommunityContent").css({
-                    height: communityHeight
-                })
-                $(".communityContent").css({
-                    height: communityHeight
-                })
-                $(".Footer").css({
-                    top: communityFooter
-                })
-             }
+        communityFooterTop = 1050;
+        for( var i = 0 ; i<CommunityData.length; i++){
+            $(".layerCommunityContent").css({height: communityHeight});
+            $(".communityContent").css({height: communityHeight+200});
+            $(".Footer").css({top: communityFooterTop});
+            if(CommunityData[i]['game'] == Gamename){
+                var data = $("<div class='Post'><h3>"+ CommunityData[i]['game']
+                            +"</h3><h4 id='playerName'>"+CommunityData[i]['name']
+                            +"</h4><h4 id='playerScore'>Score : "+CommunityData[i]['score']
+                            +"</h4><p>"+CommunityData[i]['date']+"</p></div>");
+                $(".layerCommunityContent").append(data);
+                if(i>5){
+                    communityHeight+=150; communityFooterTop+=150;
+                    $(".layerCommunityContent").css({
+                        height: communityHeight
+                    })
+                    $(".communityContent").css({
+                        height: communityHeight+200
+                    })
+                    $(".Footer").css({
+                        top: communityFooterTop
+                    })
+                }
+            }
         }
     }
-}
-else
-{
-    alert("There Is no Any Data");
-}
+    else
+    {
+        alert("There Is no Any Data");
+    }
 }
 $(".gamesNavbar ul li a").click(function()
 {
